@@ -106,7 +106,8 @@ class Client:
         passcode = input('Enter passcode : ')
 
         # Hashing passcode using sha256 hashing algorithm
-        passcode = hashlib.sha256((passcode + salts.get(self.user_id, ['', '00'])[1]).encode()).hexdigest()
+        my_salt = salts.get(self.user_id, ['', '00'])[1]
+        passcode = hashlib.sha256((passcode + my_salt).encode()).hexdigest()
 
         # authentication request
         request = {
@@ -196,7 +197,7 @@ class Client:
         :param lookup: lookup response from server
         :return: local_client socket
         '''
-        try :
+        try:
             # creating a TCP type and  IPV4 faimly Socket
             local_client = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
 
