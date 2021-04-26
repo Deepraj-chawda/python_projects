@@ -6,11 +6,18 @@ creating simple data base
 import json
 # importing hashlib module
 import hashlib
-# importing cryptography module
-from cryptography.fernet import Fernet
 # importing sample from random for creating salt
 from random import sample
+# importing cryptography module
+from cryptography.fernet import Fernet
+
+
 def create_db(user_no=1):
+    '''
+    add user in data base
+    :param user_no: no. of user added
+    :return: None
+    '''
     with open('data_base.json', 'r') as file:
         try:
             database = json.load(file)
@@ -25,8 +32,6 @@ def create_db(user_no=1):
             keys = {}
         key_file.close()
 
-
-
     # Opening data base file in write mode
     with open('data_base.json', 'w') as file:
 
@@ -37,7 +42,7 @@ def create_db(user_no=1):
                 user_id = input('User ID : ')
                 passcode = input('Passcode : ')
                 # salt for hashing passcode
-                salt = ''.join(sample('abcdef',2))
+                salt = ''.join(sample('abcdef', 2))
                 # Hashing passcode using sha256 hashing algorithm
                 passcode = hashlib.sha256((passcode+salt).encode()).hexdigest()
 
@@ -45,7 +50,7 @@ def create_db(user_no=1):
                 key = Fernet.generate_key().decode()
 
                 database[user_id] = [passcode, key]
-                keys[user_id] = [key,salt]
+                keys[user_id] = [key, salt]
 
             json.dump(database, file)
             json.dump(keys, key_file)
@@ -54,6 +59,8 @@ def create_db(user_no=1):
 
         file.close()
 
+
 if __name__ == '__main__':
+
     users = int(input("Enter the no. of user to be added : "))
     create_db(users)
