@@ -64,7 +64,7 @@ class Client:
 
         # checking Status of authentication response
         if authentication_response['status'] == 'GRANTED':
-            choice = input('Do you want to send connect request to other user (Y or N): ')
+            choice = input('Do you want to Begin chat with  other user (Y or N): ')
 
             if choice.upper() == 'Y':
 
