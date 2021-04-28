@@ -25,7 +25,7 @@ buttons = [
       ]
 
 # flag variable
-flag = False
+FLAG = False
 
 
 def back_space():
@@ -43,11 +43,11 @@ def on_click(char):
     :param char: number on button
     :return: None
     '''
-    global flag
+    global FLAG
 
-    if flag:
+    if FLAG:
         var.set('')
-        flag = False
+        FLAG = False
 
     curent = var.get()
 
@@ -57,7 +57,7 @@ def on_click(char):
         except SyntaxError:
             ans = 'Invaild Input'
 
-        flag = True
+        FLAG = True
         var.set(ans)
     else:
         var.set(curent+char)
