@@ -1,9 +1,0 @@
-Computer Science Engineering IV Semester
-CS404 Computer Org. & Architecture
-Assignment 1
-
-1.	Design half adder and full adder using either Matlab software or other software.
-2.	Design half Subtractor and full Subtractor using Matlab Simulink tool or other software.
-3.	Design 2:1 Multiplexer and de-mux using Matlab Simulink tool or other software.
-4.	Write down Matlab commands
-
